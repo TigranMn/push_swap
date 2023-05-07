@@ -4,7 +4,7 @@ SRC_DIR 		= src
 SRCS			= $(wildcard $(SRC_DIR)/*.c)
 MAIN_SRCS		= $(filter-out $(SRC_DIR)/checker_bonus.c, $(SRCS))
 B_SRCS			= $(filter-out $(SRC_DIR)/push_swap.c, $(SRCS))
-HEADERS			= $(wildcard includes/*.h)
+HEADERS			= $(wildcard includes/*.h) Makefile
 OBJ_DIR			= obj/main
 B_OBJ_DIR		= obj/checker
 OBJ_ROOT_DIR	= obj
@@ -16,7 +16,7 @@ RM				= rm -rf
 CFLAGS			= -Wall -Wextra -Werror
 MK				= mkdir -p
 
-all:			$(OBJ_DIR) $(NAME) $(B_OBJ_DIR) $(BONUS) Makefile
+all:			$(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR): $(SRC_DIR)
 	$(MK) $(OBJ_DIR)

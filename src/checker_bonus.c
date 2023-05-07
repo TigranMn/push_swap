@@ -1,18 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:27 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 19:37:11 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/checker_bonus.h"
 
-void	free_stack(t_list **head)
+static void	free_all(t_list *a, t_list *b, int *arr)
 {
-	t_list	*temp;
-
-	if (head)
-	{
-		while (*head)
-		{
-			temp = *head;
-			*head = (*head)->next;
-			free(temp);
-		}
-	}
+	free(arr);
+	free_stack(&a);
+	free_stack(&b);
 }
 
 void	final_check(t_list **a, t_list **b, int arg_count)
@@ -54,10 +58,8 @@ int	main(int argc, char **argv)
 			ft_lstadd_back(&a, make_node(arr[i++]));
 		quick_sort(arr, 0, arg_count - 1);
 		a = fill_list(a, arr, arg_count);
-		free(arr);
 		get_command(&a, &b);
 		final_check(&a, &b, arg_count);
-		free_stack(&a);
-		free_stack(&b);
+		free_all(a, b, arr);
 	}
 }

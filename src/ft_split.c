@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:31 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 12:10:45 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	ft_free(char **str)
@@ -24,16 +36,13 @@ static char	**fill_string(char **split, char const *s, char c)
 		if (*s != c)
 		{
 			len = 0;
-			while (*s && *s != c)
-			{
+			while (*s && *s != c && s++)
 				len++;
-				s++;
-			}
 			split[++i] = ft_substr(s - len, 0, len);
 			if (split[i] == NULL)
 			{
 				ft_free(split);
-				return NULL;
+				return (NULL);
 			}
 		}
 		else

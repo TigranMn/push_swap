@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:16 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 19:36:46 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -23,6 +35,7 @@ int		ft_atoi(const char *str);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_free(char **str);
 //__________________________________________________________________//
+void	free_stack(t_list **head);
 long	atoi_long(const char *str);
 int		check_arg(char *arg);
 int		count_args(char **argv);

@@ -1,25 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:47 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 19:36:02 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void free_stack(t_list **head)
+int	count_args(char **argv)
 {
-	t_list *temp;
-
-	if (head)
-	{
-		while (*head)
-		{
-			temp = *head;
-			*head = (*head)->next;
-			free(temp);
-		}
-	}
-}
-
-int count_args(char **argv)
-{
-	int i;
-	int arg_count;
-	int curr_arg_count;
+	int	i;
+	int	arg_count;
+	int	curr_arg_count;
 
 	i = 1;
 	arg_count = 0;
@@ -38,7 +35,7 @@ int count_args(char **argv)
 	return (arg_count);
 }
 
-void go_sort(t_list **a, t_list **b, int arg_count)
+void	go_sort(t_list **a, t_list **b, int arg_count)
 {
 	if (arg_count == 2)
 		sort_for_two(a);
@@ -53,7 +50,7 @@ void go_sort(t_list **a, t_list **b, int arg_count)
 	}
 }
 
-int arg_check(int arg_count, char **argv)
+int	arg_check(int arg_count, char **argv)
 {
 	long	num;
 
@@ -67,13 +64,23 @@ int arg_check(int arg_count, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
+static void	exec_main(t_list *a, t_list *b, int arg_count, int *arr)
 {
-	t_list *a;
-	t_list *b;
-	int i;
-	int arg_count;
-	int *arr;
+	quick_sort(arr, 0, arg_count - 1);
+	a = fill_list(a, arr, arg_count);
+	free(arr);
+	go_sort(&a, &b, arg_count);
+	free_stack(&a);
+	free_stack(&b);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*a;
+	t_list	*b;
+	int		i;
+	int		arg_count;
+	int		*arr;
 
 	if (argc == 1)
 		return (0);
@@ -90,10 +97,5 @@ int main(int argc, char **argv)
 	i = 0;
 	while (i < arg_count)
 		ft_lstadd_back(&a, make_node(arr[i++]));
-	quick_sort(arr, 0, arg_count - 1);
-	a = fill_list(a, arr, arg_count);
-	free(arr);
-	go_sort(&a, &b, arg_count);
-	free_stack(&a);
-	free_stack(&b);
+	exec_main(a, b, arg_count, arr);
 }

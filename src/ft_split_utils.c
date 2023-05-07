@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:29 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 12:02:27 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int	ft_strlen(const char *str)
@@ -93,7 +105,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return NULL;
+		return (NULL);
 	if (s_len < start + len)
 		len = s_len - start;
 	i = 0;

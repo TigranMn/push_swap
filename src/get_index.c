@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_index.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/06 12:01:35 by tmnatsak          #+#    #+#             */
+/*   Updated: 2023/05/06 19:33:09 by tmnatsak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int	find_index(int *arr, int value, int arg_count)
@@ -14,27 +26,12 @@ int	find_index(int *arr, int value, int arg_count)
 	return (0);
 }
 
-int	*make_array(char **arg, int size)
+static void	fill_array(char **splitted, int	*arr, int size)
 {
 	int		i;
 	int		j;
-	char	*str;
-	int		*arr;
-	char	**splitted;
 	long	num;
 
-	i = 1;
-	str = NULL;
-	while (arg[i])
-	{
-		str = ft_strjoin(str, " ");
-		str = ft_strjoin(str, arg[i++]);
-	}
-	splitted = ft_split(str, ' ');
-	free(str);
-	arr = (int *)malloc(sizeof(int) * size);
-	if (!arr)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (j < size)
@@ -48,6 +45,28 @@ int	*make_array(char **arg, int size)
 		}
 		arr[j++] = ft_atoi(splitted[i++]);
 	}
+}
+
+int	*make_array(char **arg, int size)
+{
+	int		i;
+	char	*str;
+	int		*arr;
+	char	**splitted;
+
+	i = 1;
+	str = NULL;
+	while (arg[i])
+	{
+		str = ft_strjoin(str, " ");
+		str = ft_strjoin(str, arg[i++]);
+	}
+	splitted = ft_split(str, ' ');
+	free(str);
+	arr = (int *)malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
+	fill_array(splitted, arr, size);
 	ft_free(splitted);
 	return (arr);
 }
