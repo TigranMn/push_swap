@@ -6,7 +6,7 @@
 /*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 12:01:33 by tmnatsak          #+#    #+#             */
-/*   Updated: 2023/05/07 18:27:44 by tmnatsak         ###   ########.fr       */
+/*   Updated: 2023/05/06 12:01:34 by tmnatsak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,29 +83,29 @@ void	do_command(t_list **a, t_list **b, char *line)
 		swap_stacks(a, b);
 }
 
-int	input_valid(char *l)
+int	input_valid(char *line)
 {
-	if (l[0] == 'p' && l[1] == 'a' && l[2] == '\n')
+	if (line[0] == 'p' && line[1] == 'a')
 		return (1);
-	else if (l[0] == 'p' && l[1] == 'b' && l[2] == '\n')
+	else if (line[0] == 'p' && line[1] == 'b')
 		return (1);
-	else if (l[0] == 's' && l[1] == 'a' && l[2] == '\n')
+	else if (line[0] == 's' && line[1] == 'a')
 		return (1);
-	else if (l[0] == 's' && l[1] == 'b' && l[2] == '\n')
+	else if (line[0] == 's' && line[1] == 'b')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'a' && l[2] == '\n')
+	else if (line[0] == 'r' && line[1] == 'a')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'b' && l[2] == '\n')
+	else if (line[0] == 'r' && line[1] == 'b')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'r' && l[2] == 'a' && l[3] == '\n')
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'a')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'r' && l[2] == 'b' && l[3] == '\n')
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'b')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'r' && l[2] == 'r' && l[3] == '\n')
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'r')
 		return (1);
-	else if (l[0] == 'r' && l[1] == 'r' && l[2] == '\n')
+	else if (line[0] == 'r' && line[1] == 'r')
 		return (1);
-	else if (l[0] == 's' && l[1] == 's' && l[2] == '\n')
+	else if (line[0] == 's' && line[1] == 's')
 		return (1);
 	return (0);
 }
