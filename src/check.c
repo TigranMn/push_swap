@@ -15,7 +15,7 @@
 int	ft_error(void)
 {
 	write(2, "Error\n", 6);
-	return (0);
+	return (1);
 }
 
 int	twin_check(int *arr, int size)
@@ -58,9 +58,8 @@ int	check_arg(char *arg)
 	char	**str;
 
 	str = ft_split(arg, ' ');
-	i = 0;
-	j = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		j = 0;
 		if ((str[i][j] == '+' || str[i][j] == '-') && str[i][j + 1])
@@ -74,8 +73,9 @@ int	check_arg(char *arg)
 			}
 			j++;
 		}
-		i++;
 	}
+	if (i == 0)
+		exit(0);
 	ft_free(str);
 	return (i);
 }
